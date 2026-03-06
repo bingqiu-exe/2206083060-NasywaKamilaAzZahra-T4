@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://fec2ikhahgsl"]
+
+[ext_resource type="Script" uid="uid://cwebkpmcthlrx" path="res://scenes/fish_fall_green.gd" id="1_74le6"]
+[ext_resource type="Texture2D" uid="uid://d3ptr220px2m7" path="res://assets/kenney_platformerpack/PNG/Enemies/fishGreen.png" id="2_74le6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_74le6"]
+
+[node name="FishFallGreen" type="RigidBody2D" unique_id=1431456036]
+script = ExtResource("1_74le6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1629987795]
+rotation = 4.712389
+scale = Vector2(0.148, 0.148)
+texture = ExtResource("2_74le6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1532928283]
+scale = Vector2(4.075, 4.075)
+shape = SubResource("CapsuleShape2D_74le6")

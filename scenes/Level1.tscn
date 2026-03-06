@@ -1,10 +1,86 @@
-[gd_scene load_steps=2 format=3 uid="uid://yqmk0vpvnyxr"]
+[gd_scene format=4 uid="uid://yqmk0vpvnyxr"]
 
 [ext_resource type="PackedScene" uid="uid://bc2fujtl13g10" path="res://scenes/Player.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://cluh2ekc38ktx" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_gr_dirt.png" id="2_bwv4p"]
+[ext_resource type="Texture2D" uid="uid://chgqimvh7rdh6" path="res://assets/Familiar Looking Rocket.png" id="3_dw26h"]
+[ext_resource type="PackedScene" uid="uid://bl88ttjuayvmy" path="res://scenes/AreaTrigger.tscn" id="4_76388"]
+[ext_resource type="Script" uid="uid://d1blgsiemlmbe" path="res://scenes/fish_spawner.gd" id="5_76388"]
+[ext_resource type="PackedScene" uid="uid://b118pvmscylk6" path="res://scenes/FallingFish.tscn" id="6_svatc"]
 
-[node name="Level1" type="Node2D"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_odhdn"]
+texture = ExtResource("2_bwv4p")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -38.236008, 37.267998)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -64, -64, -64, -64, 64, 32.428, 32.428)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(64, -64, -64, -64, -64, 64, 8.228004, 17.907997, 64, -20.812004)
+7:0/0 = 0
+8:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 9.196007, -64, 8.228004)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 9.196007, -64, 8.228004)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 9.196007, -64, 8.228004)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 9.196007, -64, 8.228004)
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+8:1/0 = 0
+8:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
 
-[node name="Player" parent="." instance=ExtResource("1")]
-position = Vector2(445, 209)
+[sub_resource type="TileSet" id="TileSet_6ovph"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_odhdn")
+
+[node name="Level1" type="Node2D" unique_id=2078375725]
+
+[node name="Player" parent="." unique_id=1486362730 instance=ExtResource("1")]
+position = Vector2(-584, 216)
 collision_layer = 3
 collision_mask = 3
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1092371656]
+tile_map_data = PackedByteArray("AAD8/wIAAQAHAAEAAAD8/wMAAQABAAAAAAD8/wQAAQABAAAAAAD8/wUAAQABAAAAAAD9/wIAAQAHAAEAAAD9/wMAAQABAAAAAAD9/wQAAQABAAAAAAD9/wUAAQABAAAAAAD+/wIAAQAIAAEAAAD+/wQAAQABAAAAAAD+/wUAAQABAAAAAAD//wMAAQAIAAEAAAD//wUAAQABAAAAAAAAAAQAAQAEAAAAAAAEAAQAAQACAAEAAAAFAAQAAQADAAEAAAD7/wIAAQAGAAEAAAD7/wUAAQACAAAAAAAHAAQAAQAGAAEAAAAIAAMAAQAGAAEAAAAJAAIAAQAGAAEAAAAKAAEAAQAGAAEAAAALAAAAAQAGAAEAAAAMAP//AQAGAAEAAAANAP//AQAHAAEAAAAOAP//AQAIAAEAAAAIAAQAAQABAAAAAAAJAAQAAQABAAAAAAAKAAQAAQABAAAAAAALAAQAAQABAAAAAAAMAAQAAQABAAAAAAANAAQAAQABAAAAAAANAAMAAQABAAAAAAAMAAMAAQABAAAAAAALAAMAAQABAAAAAAAKAAMAAQABAAAAAAAJAAMAAQABAAAAAAAKAAIAAQABAAAAAAALAAIAAQABAAAAAAAMAAIAAQABAAAAAAANAAIAAQABAAAAAAALAAEAAQABAAAAAAAMAAEAAQABAAAAAAANAAEAAQABAAAAAAAMAAAAAQABAAAAAAANAAAAAQABAAAAAAAHAAUAAQABAAAAAAAIAAUAAQABAAAAAAAJAAUAAQABAAAAAAAKAAUAAQABAAAAAAALAAUAAQABAAAAAAAMAAUAAQABAAAAAAANAAUAAQABAAAAAAAOAAUAAQABAAAAAAD+/wMAAQABAAAAAAD//wQAAQABAAAAAAD7/wMAAQABAAAAAAD7/wQAAQABAAAAAAAOAAAAAQABAAAAAAAOAAEAAQABAAAAAAAOAAIAAQABAAAAAAAOAAMAAQABAAAAAAAOAAQAAQABAAAAAAACAAQAAQABAAEAAAADAAQAAQACAAEAAAA=")
+tile_set = SubResource("TileSet_6ovph")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1740350121]
+position = Vector2(1760, -372)
+texture = ExtResource("3_dw26h")
+
+[node name="Area2D" parent="Sprite2D" unique_id=457490951 instance=ExtResource("4_76388")]
+position = Vector2(-94, -806)
+sceneName = "WinScreen"
+
+[node name="CollisionShape2D" parent="Sprite2D/Area2D" index="0" unique_id=518490158]
+position = Vector2(1231, 807.6875)
+
+[node name="Area2D2" parent="Sprite2D" unique_id=1919790322 instance=ExtResource("4_76388")]
+position = Vector2(-2697, 301)
+
+[node name="CollisionShape2D" parent="Sprite2D/Area2D2" index="0" unique_id=518490158]
+position = Vector2(1576, 963.875)
+
+[node name="FishSpawner" type="Node2D" parent="." unique_id=1070044858]
+script = ExtResource("5_76388")
+obstacle = ExtResource("6_svatc")
+
+[node name="FallingFish" parent="FishSpawner" unique_id=1321814108 instance=ExtResource("6_svatc")]
+
+[editable path="Sprite2D/Area2D"]
+[editable path="Sprite2D/Area2D2"]

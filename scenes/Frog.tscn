@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://clnj42gjlrfmy"]
+
+[ext_resource type="Texture2D" uid="uid://bop1k0vj7up0w" path="res://assets/kenney_platformerpack/Spritesheets/spritesheet_enemies.png" id="1_dri5l"]
+
+[sub_resource type="Animation" id="Animation_0tqiu"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yeema"]
+_data = {
+&"Idle": SubResource("Animation_0tqiu")
+}
+
+[node name="Frog" type="RigidBody2D" unique_id=106424223]
+
+[node name="Animator" type="AnimationPlayer" parent="." unique_id=258066190]
+libraries/ = SubResource("AnimationLibrary_yeema")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1415540401]
+texture = ExtResource("1_dri5l")
+hframes = 3
+frame = 2
